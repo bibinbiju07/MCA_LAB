@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>online exam</title>
+<style>
+	body {
+	  font-family:Arial, sans-serif;
+	}
+	.question {
+	  margin-bottom:20px;
+	}
+	.options {
+	  margin-bottom:10px;
+	}
+	.result {
+	  font-weight:bold;
+	  margin-top:20px;
+	}
+</style>
+</head>
+<body>
+  <div class="question">
+	<h2>Q 1:what is the capital of france</h2>
+  	<div class="options">
+		<label><input type="radio" name="q1" value="paris">paris</label><br>
+		<label><input type="radio" name="q1" value="london">london</label><br>
+		<label><input type="radio" name="q1" value="berlin">berlin</label><br>
+		<label><input type="radio" name="q1" value="madrid">madrid</label><br>
+	</div>
+  </div>
+  <button onclick="calculate()">submit exam</button>
+  <div class="result" id="result"></div>
+  <script>
+	function calculate() {
+		var selectedanswer=document.querySelector('input[name="q1"]:checked');
+		if(selectedanswer) {
+			var useranswer=selectedanswer.value;
+			var correctanswer="paris";
+			var resultelement=document.getElementById("result");
+			if(useranswer===correctanswer) {
+				resultelement.textContent="correct";
+			} else {
+				resultelement.textContent="incorrect. the correct answer is paris";
+			}
+		} else {
+			alert("please select an answer before submitting");
+		}
+		}		
+  </script>
+</body>
+</html>

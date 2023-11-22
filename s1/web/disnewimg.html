@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hover event</title>
+<style>
+	.hover-content {
+		display:none;
+		text-align:center;
+		margin-top:20px;
+	}
+	.hovered {
+		color:blue;
+		cursor:pointer;
+	}
+</style>
+</head>
+<body>
+ <h1 class="hovered">hover over this text</h1>
+ <div class="hover-content">
+	<img src="/home/lab1/Desktop/BIBIN/images.jpeg" alt="new image">
+	<p>this is new content that appears when you hover over the text</p>
+ </div>
+ <script>
+	var hovertext=document.querySelector('.hovered');
+	var hovercontent=document.querySelector('.hover-content');
+	hovertext.addEventListener('mouseover', function () {
+	hovercontent.style.display='block';	
+	});
+	hovertext.addEventListener('mouseout', function () {
+	hovercontent.style.display='none';	
+	});
+ </script>
+</body>
+</html>

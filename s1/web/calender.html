@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta name="vieewport" content="width=device-width, initial-scale=1.0">
+  <title>calender</title>
+  <style>
+	table {
+	       width:80%;
+	       border-collapse: collapse;
+	       margin: 0 auto;
+	      }
+	th,td {
+	       border:1px solid black;
+	       padding:15px;
+	       text-align:center;
+	       font-size:16px;
+ 	      }
+	th {
+	`   background-color:#f2f2f2;
+	   }
+  </style>
+</head>
+<body>
+  <h2>Enter year to generate calender:</h2>
+  <input type="number" id="yearinput">
+  <button onclick="generatecalender()">Generate Calender</button>	
+  <h2 id="calenderyear">Calender for <span id="displyyear"></span></h2>	
+  <div id="calender"></div>
+  <script>
+	function generatecalender() {
+		var year=document.getElementById("yearinput").value;
+		var calenderyearheading=document.getElementById("calenderyear");
+                calenderyearheading.textContent = "Calendar for " + year;
+		var calender = "<table>";
+		for(var month=0; month<12;month++) {
+			calender += "<tr><th colspan='7'>" + getMonthName(month) + "</th></tr>";
+			calender += "<tr><th>sun</th><th>mon</th><th>tue</th><th>wed</th><th>thu</th><th>fri</th><th>sat</th></tr>";
+		var daysinmonth = new Date(year,month + 1,0).getDate();
+		var firstday = new Date(year,month,1).getDay();
+		for(var i=0;i<firstday;i++) {
+			calender += "<td></td>"
+		}
+		for(var day=1;day<=daysinmonth;day++) {
+			calender += "<td>" + day +"</td>";
+		if(new Date(year,month,day).getDay() === 6) {
+			calender += "</tr><tr>";
+		}
+	      }
+	      calender += "</tr>";
+	     }
+	    calender += "</table>";
+	    document.getElementById("calender").innerHTML = calender;
+	   }
+	 function getMonthName(monthIndex) {
+		var monthNames = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+		return monthNames[monthIndex];
+	 }
+  </script>
+</body>
+</html> 	
