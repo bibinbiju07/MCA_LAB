@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>registration form</title>
+  <style>
+	.error {
+		color:red;
+		}
+	.container {
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		height:100vh;
+		}
+	.form-container {
+		text-align:left;
+		padding:20px;
+		border:1px solid #ccc;
+		border-radius:5px;
+		border-shadow:0 4px 8px rgba(0,0,0,0.1);
+		}
+	.form-container label,
+	.form-container input {
+		display:block;
+		margin-bottom:10px;
+		}
+	.form-container button {
+		background-color:#4caf50;
+		color:white;
+		padding:10px 20px;
+		border:none;
+		border-radius:3px;
+		cursor:pointer;
+		}
+  </style>		
+</head>
+<body>
+	<div class="container">
+	<div class="form-container">
+	  <h2>Registration Form</h2>
+	<form id="registrationform" action="phpmysql2.php" method="post">
+		<label for="username">username:</label>
+		<input type="text" id="username" name="username" required>
+		<label for="email">email:</label>
+		<input type="text" id="email" name="email" required>
+		<label for="password">password:</label>
+		<input type="password" id="password" name="password" required>
+		<label for="confirmpassword">confirm password:</label>
+		<input type="password" id="confirmpassword" name="confirmpassword" required>
+		<button type="submit">Register</button>
+	</form>
+</body>
+</html>
