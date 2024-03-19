@@ -1,0 +1,158 @@
+mysql> create table students(rollno int,name varchar(20),course varchar(20));
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> insert into student values(1,'Akash','MCA');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into students values(1,'Akash','MCA');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into students values(2,'Albert','MCA');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
++--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into students values(3,'Bibin','MCA');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into students values(4,'Adith','MCA');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
++--------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> rollback to a;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> rollback to a;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> rollback a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a' at line 1
+mysql> rollback to a;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> SAVEPOINT a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback to a;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> ROLLBACK [WORK] TO [SAVEPOINT] a
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[WORK] TO [SAVEPOINT] a' at line 1
+mysql> ROLLBACK WORK TO SAVEPOINT a
+    -> ;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> insert into students values(5,'Antony','MCA');
+Query OK, 1 row affected (0.34 sec)
+
+mysql> SAVEPOINT a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into students values(6,'Aswin','MCA');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> rollback to a;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
+|      5 | Antony | MCA    |
+|      6 | Aswin  | MCA    |
++--------+--------+--------+
+6 rows in set (0.16 sec)
+
+mysql> START TRANSACTION;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into students values(7,'Alvin','MCA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback to a;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
+|      5 | Antony | MCA    |
+|      6 | Aswin  | MCA    |
++--------+--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.25 sec)
+
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
+|      5 | Antony | MCA    |
+|      6 | Aswin  | MCA    |
++--------+--------+--------+
+6 rows in set (0.19 sec)
+
+mysql> insert into students values(8,'Mehfil','MCA');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
+|      5 | Antony | MCA    |
+|      6 | Aswin  | MCA    |
+|      8 | Mehfil | MCA    |
++--------+--------+--------+
+7 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
+|      5 | Antony | MCA    |
+|      6 | Aswin  | MCA    |
+|      8 | Mehfil | MCA    |
++--------+--------+--------+
+7 rows in set (0.00 sec)
+

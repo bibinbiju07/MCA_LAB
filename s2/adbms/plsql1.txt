@@ -1,0 +1,25 @@
+mysql> delimiter //
+mysql> create procedure display()
+    -> begin
+    -> select * from students;
+    -> end
+    -> //
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> delimiter ;
+mysql> call display();
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Akash  | MCA    |
+|      2 | Albert | MCA    |
+|      3 | Bibin  | MCA    |
+|      4 | Adith  | MCA    |
+|      5 | Antony | MCA    |
+|      6 | Aswin  | MCA    |
+|      8 | Mehfil | MCA    |
++--------+--------+--------+
+7 rows in set (0.10 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+

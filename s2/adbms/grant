@@ -1,0 +1,4 @@
+create user 'bibi' identified by '1234';
+show grants for bibi;
+grant all on bibin.* to bibi;
+revoke all on bibin.* from bibi1;
