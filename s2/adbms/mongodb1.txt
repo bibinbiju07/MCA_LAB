@@ -1,0 +1,146 @@
+ db.createCollection("EMPL")
+{ "ok" : 1 }
+> db.EMPL.insertMany([{"Empno":1,"Name":"John Doe","Salary":60000,"Role":"Manager"},{"Empno":2,"Name":"Alice Smith","Salary":5000,"Role":"Developer"}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6614fa608e2321ee75dbdbb3"),
+		ObjectId("6614fa608e2321ee75dbdbb4")
+	]
+}
+> db.EMPL.find()
+{ "_id" : ObjectId("6614fa608e2321ee75dbdbb3"), "Empno" : 1, "Name" : "John Doe", "Salary" : 60000, "Role" : "Manager" }
+{ "_id" : ObjectId("6614fa608e2321ee75dbdbb4"), "Empno" : 2, "Name" : "Alice Smith", "Salary" : 5000, "Role" : "Developer" }
+> db.EMPL.find().pretty()
+{
+	"_id" : ObjectId("6614fa608e2321ee75dbdbb3"),
+	"Empno" : 1,
+	"Name" : "John Doe",
+	"Salary" : 60000,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6614fa608e2321ee75dbdbb4"),
+	"Empno" : 2,
+	"Name" : "Alice Smith",
+	"Salary" : 5000,
+	"Role" : "Developer"
+}
+db.EMPL.insertMany([{"Empno":3,"Name":"Albert","Salary":5000,"Role":"CEO"},{"Empno":4,"Name":"Adith","Salary":60000,"Role":"Tester"},{"Empno":5,"Name":"Bibin","Salary":500,"Role":"Manager"},{"Empno":6,"Name":"Akash","Salary":50000,"Role":"Developer"},{"Empno":7,"Name":"Alvin","Salary":40000,"Role":"Software Engineer"},{"Empno":8,"Name":"Antony","Salary":30000,"Role":"Junior Developer"},{"Empno":9,"Name":"Basil","Salary":70000,"Role":"Senior Developer"},{"Empno":10,"Name":"Aswin","Salary":45000,"Role":"Manager"}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6614ff973f2b808459252f1d"),
+		ObjectId("6614ff973f2b808459252f1e"),
+		ObjectId("6614ff973f2b808459252f1f"),
+		ObjectId("6614ff973f2b808459252f20"),
+		ObjectId("6614ff973f2b808459252f21"),
+		ObjectId("6614ff973f2b808459252f22"),
+		ObjectId("6614ff973f2b808459252f23"),
+		ObjectId("6614ff973f2b808459252f24")
+	]
+}
+> db.EMPL.find().pretty()
+{
+	"_id" : ObjectId("6614fa608e2321ee75dbdbb3"),
+	"Empno" : 1,
+	"Name" : "John Doe",
+	"Salary" : 60000,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6614fa608e2321ee75dbdbb4"),
+	"Empno" : 2,
+	"Name" : "Alice Smith",
+	"Salary" : 5000,
+	"Role" : "Developer"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f1d"),
+	"Empno" : 3,
+	"Name" : "Albert",
+	"Salary" : 5000,
+	"Role" : "CEO"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f1e"),
+	"Empno" : 4,
+	"Name" : "Adith",
+	"Salary" : 60000,
+	"Role" : "Tester"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f1f"),
+	"Empno" : 5,
+	"Name" : "Bibin",
+	"Salary" : 500,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f20"),
+	"Empno" : 6,
+	"Name" : "Akash",
+	"Salary" : 50000,
+	"Role" : "Developer"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f21"),
+	"Empno" : 7,
+	"Name" : "Alvin",
+	"Salary" : 40000,
+	"Role" : "Software Engineer"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f22"),
+	"Empno" : 8,
+	"Name" : "Antony",
+	"Salary" : 30000,
+	"Role" : "Junior Developer"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f23"),
+	"Empno" : 9,
+	"Name" : "Basil",
+	"Salary" : 70000,
+	"Role" : "Senior Developer"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f24"),
+	"Empno" : 10,
+	"Name" : "Aswin",
+	"Salary" : 45000,
+	"Role" : "Manager"
+}
+> db.EMPL.find({"Role":"Manager"}).pretty()
+{
+	"_id" : ObjectId("6614fa608e2321ee75dbdbb3"),
+	"Empno" : 1,
+	"Name" : "John Doe",
+	"Salary" : 60000,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f1f"),
+	"Empno" : 5,
+	"Name" : "Bibin",
+	"Salary" : 500,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6614ff973f2b808459252f24"),
+	"Empno" : 10,
+	"Name" : "Aswin",
+	"Salary" : 45000,
+	"Role" : "Manager"
+}
+> db.EMPL.updateOne({"Name":"Alice Smith"},{$set: {"Salary":55000} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.EMPL.find({"Name":"Alice Smith"}).pretty()
+{
+	"_id" : ObjectId("6614fa608e2321ee75dbdbb4"),
+	"Empno" : 2,
+	"Name" : "Alice Smith",
+	"Salary" : 55000,
+	"Role" : "Developer"
+}
+

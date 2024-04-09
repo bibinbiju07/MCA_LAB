@@ -1,0 +1,34 @@
+> use AKASHDB
+switched to db AKASHDB
+> db.createCollection("student")
+{ "ok" : 1 }
+> db.student.insert({rollno:101,name:"Alex",Branch:"MCA"})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({rollno:102,name:"Maya",Branch:"MBA"})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({rollno:101,name:"Niya",Branch:"BCA"})
+WriteResult({ "nInserted" : 1 })
+> db.student.find()
+{ "_id" : ObjectId("6614f7a78e2321ee75dbdbb0"), "rollno" : 101, "name" : "Alex", "Branch" : "MCA" }
+{ "_id" : ObjectId("6614f7b98e2321ee75dbdbb1"), "rollno" : 102, "name" : "Maya", "Branch" : "MBA" }
+{ "_id" : ObjectId("6614f7d08e2321ee75dbdbb2"), "rollno" : 101, "name" : "Niya", "Branch" : "BCA" }
+> db.student.find().pretty()
+{
+	"_id" : ObjectId("6614f7a78e2321ee75dbdbb0"),
+	"rollno" : 101,
+	"name" : "Alex",
+	"Branch" : "MCA"
+}
+{
+	"_id" : ObjectId("6614f7b98e2321ee75dbdbb1"),
+	"rollno" : 102,
+	"name" : "Maya",
+	"Branch" : "MBA"
+}
+{
+	"_id" : ObjectId("6614f7d08e2321ee75dbdbb2"),
+	"rollno" : 101,
+	"name" : "Niya",
+	"Branch" : "BCA"
+}
+
