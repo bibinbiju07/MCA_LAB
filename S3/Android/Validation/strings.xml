@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SignUp</string>
+    <string-array name="countries_array">
+        <item>Select Country</item>
+        <item>India</item>
+        <item>United States</item>
+        <item>Canada</item>
+        <item>United Kingdom</item>
+        <item>Australia</item>
+    </string-array>
+</resources>
